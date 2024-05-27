@@ -5,6 +5,6 @@
     <artifactId>java-backend-development</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>comprehensive-java-programming</artifactId>
-  <name>comprehensive-java-programming</name>
+  <artifactId>java-refresher</artifactId>
+  <name>java-refresher</name>
 </project>
