@@ -41,4 +41,13 @@ public class UserServiceV1 {
 	public boolean existsById(long userId) {
 		return users.stream().anyMatch(user -> user.getUserId() == userId);
 	}
+
+	public UserBean create(UserBean user) {
+        user.setUserId(Long.valueOf(users.size() + 1));
+        user.setCreateDate(LocalDateTime.now());
+        users.add(user);
+
+        return user;
+    }
+
 }

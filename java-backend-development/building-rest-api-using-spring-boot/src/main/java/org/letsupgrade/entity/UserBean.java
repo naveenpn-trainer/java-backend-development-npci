@@ -1,26 +1,29 @@
 package org.letsupgrade.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class UserBean {
 
-	
+
 	private Long userId;
 	private String fullName;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dob;
 	private String mobile;
 	private String email;
 	private String password;
 	private LocalDateTime createDate;
-	private LocalDateTime updaetDate;
-	
-	
+	private LocalDateTime updateDate;
+
+
 	public UserBean() {
-		
+
 	}
 	public UserBean(Long userId, String fullName, LocalDate dob, String mobile, String email, String password,
-			LocalDateTime createDate, LocalDateTime updaetDate) {
+			LocalDateTime createDate, LocalDateTime updateDate) {
 		super();
 		this.userId = userId;
 		this.fullName = fullName;
@@ -29,7 +32,7 @@ public class UserBean {
 		this.email = email;
 		this.password = password;
 		this.createDate = createDate;
-		this.updaetDate = updaetDate;
+		this.updateDate = updateDate;
 	}
 	public Long getUserId() {
 		return userId;
@@ -73,12 +76,18 @@ public class UserBean {
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
-	public LocalDateTime getUpdaetDate() {
-		return updaetDate;
+	public LocalDateTime getUpdateDate() {
+		return updateDate;
 	}
-	public void setUpdaetDate(LocalDateTime updaetDate) {
-		this.updaetDate = updaetDate;
+	public void setUpdateDate(LocalDateTime updaetDate) {
+		this.updateDate = updaetDate;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "UserBean [userId=" + userId + ", fullName=" + fullName + ", dob=" + dob + ", mobile=" + mobile
+				+ ", email=" + email + ", password=" + password + ", createDate=" + createDate + ", updateDate="
+				+ updateDate + "]";
+	}
+
+
 }
