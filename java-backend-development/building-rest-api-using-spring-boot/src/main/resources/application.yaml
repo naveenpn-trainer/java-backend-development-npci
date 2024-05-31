@@ -1,0 +1,9 @@
+# Spring Boot Application Configuration
+server:
+  port: 8081
+  
+  
+# Logging configuration
+logging:
+  level:
+    root: OFF  

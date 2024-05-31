@@ -2,6 +2,12 @@ package org.letsupgrade.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -9,9 +15,17 @@ public class UserBean {
 
 
 	private Long userId;
+	
+	@NotBlank(message = "Full name cannot be blank.")
+	@Size(min=3, message = "Full name should be atleast more than 3")
 	private String fullName;
+	
+	@Past(message = "DOB to be past date")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dob;
+	
+	@NotNull
+	@Pattern(regexp = "[6789]{1}[0-9]{9}", message="Enter a valid 10 digit no")
 	private String mobile;
 	private String email;
 	private String password;

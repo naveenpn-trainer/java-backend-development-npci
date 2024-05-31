@@ -3,18 +3,25 @@ package org.letsupgrade.controller;
 import java.util.List;
 
 import org.letsupgrade.entity.UserBean;
-import org.letsupgrade.service.UserServiceV1;
+import org.letsupgrade.service.UserServiceWithExceptionHandling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
 
 
 @RestController
 public class UserController {
 
 	@Autowired
-	private UserServiceV1 userService;
+	private UserServiceWithExceptionHandling userService;
 
 	@GetMapping(path = "/users")
 	public ResponseEntity<List<UserBean>> getAllUsers() {
@@ -42,7 +49,7 @@ public class UserController {
 	}
 
 	@PostMapping(path="/users")
-	public ResponseEntity<UserBean> createUser(@RequestBody UserBean user) {
+	public ResponseEntity<UserBean> createUser(@Valid @RequestBody UserBean user) {
 		System.out.println(user);
 		UserBean savedUser = userService.create(user);
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
